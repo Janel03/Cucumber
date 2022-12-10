@@ -13,8 +13,10 @@ public class LoginPage extends CommonMethods {
     @FindBy(xpath="//*[@id='btnLogin']")
     public WebElement loginButton;
 
+
     public LoginPage(){
         //call selenium page factory
         PageFactory.initElements(driver, this);
     }
+
 }

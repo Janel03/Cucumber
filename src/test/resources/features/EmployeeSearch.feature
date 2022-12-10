@@ -7,7 +7,19 @@ Feature: US-321 Searching the employee
     And user clicks on login button
     Then user is successfully logged in
     When user clicks on PIM option
-    And user clicks on Employee List option
-    When user enters valid employee id
+    And user clicks on EmployeeList option
+    When user enter valid employee id
     And user clicks on search button
-    Then user sees employee information is displayed
+    Then user see employee information is displayed
+
+  @sprint4 @test
+  Scenario: Search employee by name
+    Given user is navigated to HRMS application
+    When user enters valid username and valid password
+    And user clicks on login button
+    Then user is successfully logged in
+    When user clicks on PIM option
+    And user clicks on EmployeeList option
+    When user enters valid employee name
+    And user clicks on search button
+    Then user see employee information is displayed

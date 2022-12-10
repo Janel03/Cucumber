@@ -12,24 +12,28 @@ public class AddEmployeeSteps extends CommonMethods {
         WebElement pimOption = driver.findElement(By.id("menu_pim_viewPimModule"));
         pimOption.click();
     }
+
     @When("user clicks on Add Employee button")
     public void user_clicks_on_add_employee_button() {
         WebElement addEmployeeOption = driver.findElement(By.id("menu_pim_addEmployee"));
         addEmployeeOption.click();
     }
-    @When("user enters firstname and lastname")
-    public void user_enters_firstname_and_lastname() {
-        WebElement firstname = driver.findElement(By.id("firstName"));
-        firstname.sendKeys("soman");
 
-        WebElement lastname = driver.findElement(By.id("lastName"));
-        lastname.sendKeys("yuria");
+    @When("user enter firstname and lastname")
+    public void user_enter_firstname_and_lastname() {
+        WebElement firstName = driver.findElement(By.id("firstName"));
+        firstName.sendKeys("soman");
+
+        WebElement lastName = driver.findElement(By.id("lastName"));
+        lastName.sendKeys("yuria");
     }
+
     @When("user clicks on save button")
     public void user_clicks_on_save_button() {
         WebElement saveButton = driver.findElement(By.id("btnSave"));
         saveButton.click();
     }
+
     @Then("employee added successfully")
     public void employee_added_successfully() {
         System.out.println("Employee Added");

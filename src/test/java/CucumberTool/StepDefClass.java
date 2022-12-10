@@ -1,4 +1,3 @@
-/*
 package CucumberTool;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -9,7 +8,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
-
 public class StepDefClass {
     WebDriver driver;
     @Given("user is navigated to HRMS application")
@@ -24,7 +22,6 @@ public class StepDefClass {
     public void user_enters_valid_username_and_valid_password() {
         WebElement usernameField = driver.findElement(By.id("txtUsername"));
         usernameField.sendKeys("admin");
-
         WebElement passwordField = driver.findElement(By.id("txtPassword"));
         passwordField.sendKeys("Hum@nhrm123");
     }
@@ -42,10 +39,9 @@ public class StepDefClass {
             System.out.println("Test is failed");
         }
     }
-    @Then("user verified dashboard page")
-    public void user_verified_dashboard_page() {
+    @Then("user verify dashboard page")
+    public void user_verify_dashboard_page() {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
 }
-*/
