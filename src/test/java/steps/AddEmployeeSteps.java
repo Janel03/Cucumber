@@ -3,8 +3,12 @@ import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import utils.CommonMethods;
-import java.util.Map;
+import utils.Constants;
+import utils.ExcelReader;
+import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 public class AddEmployeeSteps extends CommonMethods {
     @When("user clicks on PIM option")
@@ -19,8 +23,8 @@ public class AddEmployeeSteps extends CommonMethods {
         //addEmployeeOption.click();
         click(dashboard.addEmployeeOption);
     }
-    @When("user enter firstname and lastname")
-    public void user_enter_firstname_and_lastname() {
+    @When("user enters firstname and lastname")
+    public void user_enters_firstname_and_lastname() {
         //WebElement firstName = driver.findElement(By.id("firstName"));
         //firstName.sendKeys("soman");
         sendText(addEmployee.firstNameField, "joshpan");
@@ -39,13 +43,13 @@ public class AddEmployeeSteps extends CommonMethods {
         System.out.println("Employee Added");
     }
 
-    @When("user enter {string} and {string}")
-    public void user_enter_and(String firstName, String lastName) {
+    @When("user enters {string} and {string}")
+    public void user_enters_and(String firstName, String lastName) {
         sendText(addEmployee.firstNameField, firstName);
         sendText(addEmployee.lastNameField, lastName);
     }
-    @When("user enter {string} and {string} for adding multiple employees")
-    public void user_enter_and_for_adding_multiple_employees(String firstNameValue, String lastNameValue) {
+    @When("user enters {string} and {string} for adding multiple employees")
+    public void users_enter_and_for_adding_multiple_employees(String firstNameValue, String lastNameValue) {
         sendText(addEmployee.firstNameField, firstNameValue);
         sendText(addEmployee.lastNameField, lastNameValue);
     }
@@ -68,6 +72,35 @@ public class AddEmployeeSteps extends CommonMethods {
          click(dashboard.addEmployeeOption);
          Thread.sleep(2000);
      }
+    }
+    @When("user adds multiple employees from excel using {string} and verify it")
+    public void user_adds_multiple_employees_from_excel_using_and_verify_it(String sheetName) throws IOException, InterruptedException {
+       List<Map<String,String>>empFromExcel=
+               ExcelReader.excelListIntoMap(Constants.TESTDATA_FILEPATH,sheetName);
+//returns one map from list of maps
+        Iterator<Map<String,String>>itr=empFromExcel.iterator();
+        //returns the key & value for employees from excel
+        while (itr.hasNext()){
+            Map<String,String>mapNewEmp=itr.next();
+            sendText(addEmployee.firstNameField,mapNewEmp.get("firstName"));
+            sendText(addEmployee.middleNameField,mapNewEmp.get("middleName"));
+            sendText(addEmployee.lastNameField,mapNewEmp.get("lastName"));
+            sendText(addEmployee.photograph,mapNewEmp.get("photo"));
+
+            if (!addEmployee.checkBox.isSelected()){
+                click(addEmployee.checkBox);
+            }
+            sendText(addEmployee.createusernameField,mapNewEmp.get("username"));
+            sendText(addEmployee.createusernameField,mapNewEmp.get("password"));
+            sendText(addEmployee.confirmpasswordField,mapNewEmp.get("confirmPassword"));
+
+            click(addEmployee.saveButton);
+            //verification is HW
+            Thread.sleep(2000);
+            click(dashboard.addEmployeeOption);
+            Thread.sleep(2000);
+
+        }
     }
 
 }

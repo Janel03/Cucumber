@@ -10,18 +10,18 @@ Feature: Add Employee
   @sprint3 @regression
   Scenario: Adding one employee
     #Given user is navigated to HRMS application
-    And user enter firstname and lastname
+    And user enters firstname and lastname
     And user clicks on save button
     Then employee added successfully
 
     @test1
     Scenario: Adding one employee using feature file
-      And user enter "zalam" and "alia"
+      And user enters "zalam" and "alia"
       And user clicks on save button
       Then employee added successfully
   @outline
   Scenario Outline: Adding multiple employees using feature file
-    And user enter "<firstName>" and "<lastName>" for adding multiple employees
+    And user enters "<firstName>" and "<lastName>" for adding multiple employees
     And user clicks on save button
     Then employee added successfully
     Examples:
@@ -37,3 +37,7 @@ Feature: Add Employee
     |zara       |MS       |camilullah|
     |birgul     |MS       |ozgin     |
     |alina      |MS       |bob       |
+
+   @excel
+   Scenario: Adding multiple employees using excel file
+     When user adds multiple employees from excel using "EmployeeData" and verify it

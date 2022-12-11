@@ -10,8 +10,8 @@ public class EmployeeSearchSteps extends CommonMethods {
         //click(empListOption);
         click(dashboard.empListOption);
     }
-    @When("user enter valid employee id")
-    public void user_enter_valid_employee_id() {
+    @When("user enters valid employee id")
+    public void user_enters_valid_employee_id() {
         //WebElement empIdField = driver.findElement(By.id("empsearch_id"));
         //sendText(empIdField, "45154A");
         // sendText(empIdField, ConfigReader.getPropertyValue("empId"));
@@ -23,8 +23,8 @@ public class EmployeeSearchSteps extends CommonMethods {
         //click(searchButton);
         click(employeeList.searchButton);
     }
-    @Then("user see employee information is displayed")
-    public void user_see_employee_information_is_displayed() {
+    @Then("user sees employee information is displayed")
+    public void user_sees_employee_information_is_displayed() {
         System.out.println("Employee information can be seen");
     }
 
