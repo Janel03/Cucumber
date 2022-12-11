@@ -25,7 +25,15 @@ Feature: Add Employee
     And user clicks on save button
     Then employee added successfully
     Examples:
-      | firstName | lastName |
-      |gulnam     |mazar     |
-      |rampal     |chambel   |
-      |azam       |asel      |
+      |firstName | lastName |
+      |gulnam     |mazar    |
+      |rampal     |chambel  |
+      |azam       |asel     |
+
+    @datatable
+    Scenario: Adding multiple employees using data table
+      When user adds multiple employees and verifies they are added successfully
+    | firstName|middleName|lastName|
+    |zara       |MS       |camilullah|
+    |birgul     |MS       |ozgin     |
+    |alina      |MS       |bob       |

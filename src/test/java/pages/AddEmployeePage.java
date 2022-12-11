@@ -8,6 +8,9 @@ public class AddEmployeePage extends CommonMethods {
     public WebElement firstNameField;
     @FindBy(id="lastName")
     public WebElement lastNameField;
+
+    @FindBy(id = "middleName")
+    public WebElement middleNameField;
     @FindBy(id="btnSave")
     public WebElement saveButton;
     public AddEmployeePage(){
