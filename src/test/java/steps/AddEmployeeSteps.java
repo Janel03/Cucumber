@@ -1,4 +1,5 @@
 package steps;
+
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -9,7 +10,6 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
 public class AddEmployeeSteps extends CommonMethods {
     @When("user clicks on PIM option")
     public void user_clicks_on_pim_option() {
@@ -73,8 +73,8 @@ public class AddEmployeeSteps extends CommonMethods {
          Thread.sleep(2000);
      }
     }
-    @When("user adds multiple employees from excel using {string} and verify it")
-    public void user_adds_multiple_employees_from_excel_using_and_verify_it(String sheetName) throws IOException, InterruptedException {
+    @When("user adds multiple employees from excel using {string} and verifies it")
+    public void user_adds_multiple_employees_from_excel_using_and_verifies_it(String sheetName) throws IOException, InterruptedException {
        List<Map<String,String>>empFromExcel=
                ExcelReader.excelListIntoMap(Constants.TESTDATA_FILEPATH,sheetName);
 //returns one map from list of maps
@@ -91,7 +91,7 @@ public class AddEmployeeSteps extends CommonMethods {
                 click(addEmployee.checkBox);
             }
             sendText(addEmployee.createusernameField,mapNewEmp.get("username"));
-            sendText(addEmployee.createusernameField,mapNewEmp.get("password"));
+            sendText(addEmployee.createpasswordField,mapNewEmp.get("password"));
             sendText(addEmployee.confirmpasswordField,mapNewEmp.get("confirmPassword"));
 
             click(addEmployee.saveButton);
@@ -99,10 +99,22 @@ public class AddEmployeeSteps extends CommonMethods {
             Thread.sleep(2000);
             click(dashboard.addEmployeeOption);
             Thread.sleep(2000);
-
         }
+      /*  //Verify that the employees were added
+        List<String> employeeList = new ArrayList<>();
+        for (Map<String,String> emp : empFromExcel) {
+            String fullName = emp.get("firstName") + " " + emp.get("middleName") +
+                    " " + emp.get("lastName");
+            employeeList.add(fullName);
+        }
+        for (String fullName : employeeList) {
+            //Verify that the employee is present in the employee list
+            assertTrue(driver.findElement(By.xpath("//table[@id='resultTable']" +
+                    "//a[text()='" + fullName + "']")).isDisplayed());
+        }*/
     }
-
 }
+
+
 
 
