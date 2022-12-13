@@ -6,13 +6,13 @@ import utils.CommonMethods;
 public class AddEmployeePage extends CommonMethods {
     @FindBy(id = "firstName")
     public WebElement firstNameField;
-    @FindBy(id="lastName")
+
+    @FindBy(id = "lastName")
     public WebElement lastNameField;
 
     @FindBy(id = "middleName")
     public WebElement middleNameField;
-    @FindBy(id="btnSave")
-    public WebElement saveButton;
+
     @FindBy(id = "photofile")
     public WebElement photograph;
 
@@ -28,14 +28,18 @@ public class AddEmployeePage extends CommonMethods {
     @FindBy(id = "re_password")
     public WebElement confirmpasswordField;
 
+    @FindBy(id = "employeeId")
+    public WebElement empIdLocator;
+
+    @FindBy(id = "btnSave")
+    public WebElement saveButton;
+
     public AddEmployeePage(){
-
-        //pageFactory is the concept of selenium which we use to implement page
-        //object model design pattern which is responsible to initialize all the
-        //objects of the class. here when we say objects, we mean locators what we
-        //also call object repository
+        //page factory is the concept of selenium which we use to implement page
+        // object model design pattern which is respnsible to initialize all the objects
+        //of the class. here when we say objects, we mean locators what we also call
+        //object repository.
         //if someone ask this to you in the interview you have to write the same thing
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
-
 }
