@@ -27,6 +27,7 @@ public class Log {
         Log.info(message);
     }
     public static void warning(String warning){
+
      Log.info(warning);
     }
 }
